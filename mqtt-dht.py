@@ -43,11 +43,11 @@ while True:
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 
     if humidity is not None and temperature is not None:
-        data = {'temperature': round(temperature, decim_digits),
-                'humidity': round(humidity, decim_digits)}
+        #data = {'temperature': round(temperature, decim_digits),
+        #        'humidity': round(humidity, decim_digits)}
 
-        client.publish(topic, json.dumps(data))
-
+        client.publish(topic + '/temperature', round(temperature, decim_digits))
+        client.publish(topic + /'humidity', round(humidity, decim_digits))
         print('Published. Sleeping ...')
     else:
         print('Failed to get reading. Skipping ...')
