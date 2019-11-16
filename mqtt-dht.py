@@ -47,7 +47,7 @@ while True:
         #        'humidity': round(humidity, decim_digits)}
 
         client.publish(topic + '/temperature', round(temperature, decim_digits))
-        client.publish(topic + /'humidity', round(humidity, decim_digits))
+        client.publish(topic + '/humidity', round(humidity, decim_digits))
         print('Published. Sleeping ...')
     else:
         print('Failed to get reading. Skipping ...')
