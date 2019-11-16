@@ -14,7 +14,7 @@ sensor_type = config['sensor'].get('type', 'dht22').lower()
 if sensor_type == 'dht22':
     sensor = Adafruit_DHT.DHT22
 elif sensor_type == 'dht11':
-    sensor = Adafruit_DHT.dht11
+    sensor = Adafruit_DHT.DHT11
 elif sensor_type == 'am2302':
     sensor = Adafruit_DHT.AM2302
 else:
