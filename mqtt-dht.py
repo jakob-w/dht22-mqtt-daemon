@@ -30,8 +30,9 @@ sleep_time = config['sensor'].getint('interval', 60)
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code {}".format(rc))
 
-client = mqtt.Client()
+client = mqtt.Client(client_id=config['mqtt'].get('clientid',''))
 client.on_connect = on_connect
+client.username_pw_set(config['mqtt'].get('username',''),config['mqtt'].get('password',''))
 client.connect(config['mqtt'].get('hostname', 'homeassistant'),
                config['mqtt'].getint('port', 1883),
                config['mqtt'].getint('timeout', 60))
