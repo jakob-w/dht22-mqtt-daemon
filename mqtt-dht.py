@@ -4,10 +4,10 @@ import paho.mqtt.client as mqtt
 import time
 import Adafruit_DHT
 from configparser import ConfigParser
-import json
+import sys
 
 config = ConfigParser(delimiters=('=', ))
-config.read('config.ini')
+config.read(sys.path[0] + '/config.ini')
 
 sensor_type = config['sensor'].get('type', 'dht22').lower()
 
