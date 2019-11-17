@@ -34,8 +34,7 @@ client = mqtt.Client(client_id=config['mqtt'].get('clientid',''))
 client.on_connect = on_connect
 client.username_pw_set(config['mqtt'].get('username',''),config['mqtt'].get('password',''))
 client.connect(config['mqtt'].get('hostname', 'homeassistant'),
-               config['mqtt'].getint('port', 1883),
-               config['mqtt'].getint('timeout', 60))
+               config['mqtt'].getint('port', 1883))
 client.loop_start()
 
 while True:
