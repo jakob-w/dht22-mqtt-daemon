@@ -24,7 +24,8 @@ pin = config['sensor'].get('pin', 10)
 topic = config['mqtt'].get('topic', 'temperature/dht22')
 decim_digits = config['sensor'].getint('decimal_digits', 2)
 sleep_time = config['sensor'].getint('interval', 60)
-
+qos = config['mqtt'].get('qos', 0)
+retain = config['mqtt'].get('retain', false)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -43,8 +44,10 @@ while True:
 
     if humidity is not None and temperature is not None:
 
-        client.publish(topic + '/temperature', round(temperature, decim_digits))
-        client.publish(topic + '/humidity', round(humidity, decim_digits))
+        #client.publish(topic + '/temperature', round(temperature, decim_digits))
+        #client.publish(topic + '/humidity', round(humidity, decim_digits))
+        client.publish(topic + '/temperature', temperature, qos, retain)
+        client.publish(topic + '/humidity', humidity, qos, retain)
         
         print('Published. Sleeping ...')
     else:
