@@ -25,7 +25,7 @@ topic = config['mqtt'].get('topic', 'temperature/dht22')
 decim_digits = config['sensor'].getint('decimal_digits', 2)
 sleep_time = config['sensor'].getint('interval', 60)
 qos = config['mqtt'].getint('qos', 0)
-retain = config['mqtt'].getboolean('retain', 'false')
+retain = config['mqtt'].getboolean('retain')
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
